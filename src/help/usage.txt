@@ -1,0 +1,70 @@
+                         TCP/IP Builder 1.70
+                         -------------------
+
+Before running TCP/IP Builder in your computer you have to read 
+README.TXT file and accept the agreement.
+By running Builder.EXE file you agree with the TERMS AND 
+CONDITIONS FOR USING, COPYING AND DISTRIBUTION of this program.
+
+-------------------------------------------------------------------
+
+Install:
+========
+
+1. UnZIP Builder.ZIP file in final destination directory.
+
+2. Run Builder.EXE
+
+
+How do I use it?
+================
+
+1. Run Builder.EXE
+
+2. Type in your local IP address (Be sure to use the IP for the interface to be used)
+
+3. Enter a port number or 0 if you want Windows to select an empty one for you.
+
+4. Choose TCP or UDP protocol.
+
+5. Create Socket (If UDP was selected you are ready to send and receive.)
+
+IF TCP:
+
+6a. Type in your target IP and port number and Connect
+
+or
+
+6b. Click Listen to set the socket as server listening for connections.
+
+
+You will see incoming data in Receive data and you will be able to send data using Send data section.
+You can close the conection at any time by clicking the Destroy Socket button anda start over.
+Or just exit using Exit button :)
+
+
+What is Resolver?
+=================
+
+Resolver is an add-in that let you translate Internet Computer Names to numeric IPs.
+
+
+Uninstall:
+==========
+
+1. Close any running copy of TCP/IP Builder. 
+
+2. From windows explorer remove installation directory.
+
+Done.
+
+
+Requirements:
+=============
+
+Tested on Windows 98 and Windows 2000 Proffesional
+Should work fine over Windows 95(Patched)/ME/NT and XP.
+
+
+-------------------------------------------------------------------
+Copyright 2002 by DRK - http://www.drk.com.ar

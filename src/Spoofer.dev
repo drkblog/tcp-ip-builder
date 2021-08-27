@@ -1,0 +1,13 @@
+[Project]
+FileName=F:\VC\Builder\Spoofer.dev
+Name=Spoofer
+Ver=1
+IsCpp=1
+Type=0
+Compiler=-D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS
+CppCompiler=-D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS
+Includes=
+Linker=
+Libs=
+UnitCount=0
+Folders="Source Files","Header Files","Resource Files"

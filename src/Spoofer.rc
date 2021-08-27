@@ -1,0 +1,342 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Spoofer.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Spoofer.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 252, 139
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION " About TCP/IP Builder"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LTEXT           "TCP/IP Builder Version 1.9",IDC_STATIC,62,10,183,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002, 2012 by DRK Open source software",IDC_STATIC,62,23,183,8
+    PUSHBUTTON      "www.drk.com.ar",IDC_WEB,118,111,70,12,BS_FLAT
+    LTEXT           "Builder Logo contributed by Sebastián Fernández",IDC_STATIC,62,36,183,8
+    CONTROL         134,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,7,7,44,41
+    CONTROL         135,IDC_STATIC,"Static",SS_BITMAP | WS_BORDER,44,99,44,16
+    GROUPBOX        "A free open source software tool by...",IDC_STATIC,7,76,238,56
+    LTEXT           "DRK Logo contributed by Marcos Zanet",IDC_STATIC,62,50,183,8
+    LTEXT           "Leandro H. Fernández",IDC_STATIC,117,95,72,8
+    LTEXT           "Bug fix contributed by Iv Guanglin",IDC_STATIC,62,63,183,8
+END
+
+IDD_SPOOFER_DIALOG DIALOGEX 0, 0, 517, 350
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "TCP/IP Builder"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "IPAddress1",IDC_IPADDR,"SysIPAddress32",WS_TABSTOP,50,19,100,13
+    EDITTEXT        IDC_PORT,154,19,41,13,ES_AUTOHSCROLL,WS_EX_RIGHT
+    CONTROL         "TCP",IDC_TCP,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,201,20,30,10
+    CONTROL         "UDP",IDC_UDP,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,233,20,31,10
+    PUSHBUTTON      "Create Socket",IDC_CREATE,375,18,57,14
+    PUSHBUTTON      "Destroy Socket",IDC_DESROY,445,18,57,14
+    CONTROL         "IPAddress1",IDC_RIPADDR,"SysIPAddress32",WS_TABSTOP,50,56,100,13
+    EDITTEXT        IDC_RPORT,154,56,41,13,ES_AUTOHSCROLL,WS_EX_RIGHT
+    PUSHBUTTON      "Connect",IDC_CONNECT,375,55,58,14
+    EDITTEXT        IDC_SBUFFER,16,96,416,98,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "Send",IDC_SEND,445,95,58,14
+    CONTROL         "Don't route",IDC_NOROUTE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,445,130,58,10
+    CONTROL         "Out of band",IDC_OOB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,445,143,58,10
+    PUSHBUTTON      "Clear",IDC_RCLR,445,220,58,14
+    PUSHBUTTON      "Clear",IDC_SCLR,445,112,58,14
+    PUSHBUTTON      "About...",IDC_ABOUT,339,329,65,14
+    PUSHBUTTON      "Exit",IDCANCEL,445,329,65,14
+    EDITTEXT        IDC_RBUFFER,16,220,416,88,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    GROUPBOX        "Socket Setup",IDC_STATIC,7,7,503,33
+    GROUPBOX        "Connection Setup",IDC_STATIC,7,43,503,33
+    GROUPBOX        "Send data",IDC_STATIC,7,83,503,120
+    GROUPBOX        "Receive data",IDC_STATIC,7,206,503,118
+    LTEXT           "Packets:",IDC_STATIC,16,313,29,8
+    LTEXT           "Bytes:",IDC_STATIC,171,313,20,8
+    LTEXT           "Last packet:",IDC_STATIC,320,313,40,8
+    LTEXT           "0",IDC_PACKETS,50,313,72,8
+    LTEXT           "0",IDC_BYTES,196,313,70,8
+    LTEXT           "0",IDC_LAST,364,313,66,8
+    LTEXT           "Local IP:",IDC_STATIC,16,21,29,8
+    LTEXT           "IP:",IDC_STATIC,16,58,10,8
+    CONTROL         "Keep alive",IDC_KEEPALIVE,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,200,55,49,14
+    CONTROL         "No delay",IDC_NODELAY,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,253,55,47,14
+    PUSHBUTTON      "System information...",IDC_NETSTAT,7,329,79,14
+    PUSHBUTTON      "NS look up...",IDC_DNSRES,127,329,65,14
+    CONTROL         "Detail >>>",IDC_RDETAIL,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,445,238,58,14
+    PUSHBUTTON      "Help...",IDC_HELPB,233,329,65,14
+    PUSHBUTTON      "Listen",IDC_BIND,445,55,58,14
+    CONTROL         "Debugging...",IDC_DEBUG,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,445,256,58,14
+    CONTROL         "Parse ASCII",IDC_PARSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,445,156,58,10
+    CONTROL         "Broadcast",IDC_BCAST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,445,169,48,10
+    CONTROL         "Reuse address",IDC_REUSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,272,20,63,10
+END
+
+IDD_PROTOINFO DIALOGEX 0, 0, 292, 195
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION " System information"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_INFO,7,7,278,181,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+END
+
+IDD_RESOLVER DIALOGEX 0, 0, 346, 192
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION " NS look up..."
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_NAME,37,7,240,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Look up",IDC_RESOLVE,289,7,50,14
+    EDITTEXT        IDC_RESULT,7,29,332,156,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Name:",IDC_STATIC,7,9,22,8
+END
+
+IDD_RDWINDOW DIALOGEX 260, 65523, 439, 207
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "RAW Packet Data"
+FONT 8, "Courier New", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_SCREEN,7,7,425,178,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         "Append mode",IDC_APPEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,190,60,10
+    CONTROL         "Mark packet boundaries",IDC_BOUNDARIES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,70,190,102,10
+END
+
+IDD_HELP DIALOG 0, 0, 314, 241
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Help"
+FONT 8, "Courier New"
+BEGIN
+    EDITTEXT        IDC_HELPSCREEN,7,7,300,208,ES_MULTILINE | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "Switch to Readme",IDC_SWITCH,7,220,96,14
+    PUSHBUTTON      "Switch to Help",IDC_SWHELP,211,220,96,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,9,0,0
+ PRODUCTVERSION 1,9,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x29L
+#else
+ FILEFLAGS 0x28L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "www.drk.com.ar"
+            VALUE "CompanyName", "DRK"
+            VALUE "FileDescription", "TCP/IP Builder"
+            VALUE "FileVersion", "1.9.0.0"
+            VALUE "InternalName", "TCPIPBuilder"
+            VALUE "LegalCopyright", "Copyright (C) 2002, 2012 by DRK Open source software"
+            VALUE "LegalTrademarks", "GNU GPL"
+            VALUE "OriginalFilename", "BUILDER.EXE"
+            VALUE "PrivateBuild", "-"
+            VALUE "ProductName", "TCP/IP Builder Application"
+            VALUE "ProductVersion", "1.9.0.0"
+            VALUE "SpecialBuild", "-"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 245
+        VERTGUIDE, 62
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 132
+    END
+
+    IDD_SPOOFER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 510
+        VERTGUIDE, 16
+        VERTGUIDE, 50
+        VERTGUIDE, 154
+        VERTGUIDE, 432
+        VERTGUIDE, 445
+        VERTGUIDE, 501
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 343
+        HORZGUIDE, 25
+        HORZGUIDE, 62
+        HORZGUIDE, 308
+        HORZGUIDE, 317
+    END
+
+    IDD_PROTOINFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 285
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 188
+    END
+
+    IDD_RESOLVER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 339
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 185
+    END
+
+    IDD_RDWINDOW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 432
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 200
+    END
+
+    IDD_HELP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 307
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 234
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LOGO                BITMAP                  "res\\logo.bmp"
+IDB_DRKLOGO             BITMAP                  "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "&About TCP/IP Builder..."
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+    IDS_URL                 "http://www.drk.com.ar/builder.php?f=0&v=155"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Spoofer.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

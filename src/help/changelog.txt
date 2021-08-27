@@ -1,0 +1,120 @@
+TCP/IP Builder - ChangeLog
+==========================
+
+
+
+Version 1.7
+
+* Hardcoded 512 bytes limit for UDP packet changed to follow TCP/IP stack settings.
+
+Version 1.7 - Released
+
+---
+
+Version 1.6
+
+* TCP/IP Builder went open source under GPL license.
+
+Version 1.6 - Released
+
+---
+
+Version 1.55
+
+* IP, Protocol, Port and send flags configuration is persistent now.
+* New 'Exit' confirmation window.
+* Minor bug fixes.
+* About window updated.
+
+Version 1.55 - Released
+
+---
+
+Version 1.53
+
+* New RAW Packet Data Append mode.
+* Mark boundaries option for RAW Packet Data window.
+* CMSocket error windows were fixed to modal style.
+* Receive data 'X' button will clear RAW Packet Data window also.
+
+Version 1.53 - Released
+
+---
+
+Version 1.47
+
+* Added ASCII parser input support
+* Full support for sending and receiving binary data
+* A few bugs were fixed
+* Help file updated
+
+Version 1.47 - Released
+
+---
+
+Version 1.41
+
+* Added RAW byte input support for characters under ASCII 32
+* Added WinSock information to 'System Info'
+* A few trivial bugs were fixed
+* Help file updated
+
+Version 1.41 - Released
+
+---
+
+Version 1.37
+
+* Added RAW byte input support
+* UDP functionality improved
+* Added 'D'ebug option to receive section
+* Several bugs were fixed
+* New logo by S&S
+
+Version 1.37 - Released
+
+---
+
+Version 1.32
+
+* Added server functionality
+
+Version 1.32 - Released
+
+---
+
+Version 1.28
+
+* Added RAW Packet Detail for detailed info on received packets
+* Added on-line reference helper
+
+Version 1.28 - Released
+
+---
+
+Version 1.20
+
+* Several error windows with uninitialized text fixed
+* Added 'System Info' functionality (Processor, computer name, IP addresses)
+* Added 'Resolver' functionality for DNS lookup
+* Clear receive and send data buttons were changed to X and moved
+* Corrected version number in readme.txt and usage.txt files
+* Added wait mouse cursor to some operations
+
+Version 1.20 - Released
+
+---
+
+Version 1.15
+
+* Receive data control does not truncate incoming text
+* Added 'Keep alive' and 'No delay' socket options
+* Receive data control scrolls to show last received text
+* About button added to main dialog window
+* About window links to www.drk.com.ar
+
+Version 1.15 - Released
+
+---
+
+Version 1.00 - Released

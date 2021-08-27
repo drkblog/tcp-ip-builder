@@ -1,0 +1,91 @@
+==========================
+TCP/IP Builder - Reference
+==========================
+
+Socket setup:
+-------------
+
+Local IP	IP to bind the socket to, has to be one of the IPs of
+		your machine.
+Local Port	Port of your machine to use, if 0 the first free port
+		(over 1024) will be selected. If you are planning to 
+		set the socket to Listen you MUST define a port number
+		here.
+TCP/UDP		Select between TCP and UDP protocol.
+Blocking	Reserved.
+
+
+Create		If TCP was selected, create a socket ready for Connect
+		or Listen.
+		If UDP was selected, create a socket ready to receive
+		and send data. When sending, IP and Port fields in
+		Connection Setup section are used as destination
+		address.
+
+
+Connection Setup:
+-----------------
+
+IP		Remote IP, the IP of the machine to connect this
+		socket.
+Port		Remote Port to connect to. (Valid ports are: 1..65535)
+Keep alive	Use keep alive. Send packets to keep the connection
+		alive.
+No delay	Disable the Nagle algorithm. The Nagle algorithm is
+		used to reduce the number of small packets sent by a
+		host by buffering unacknowledged send data until a
+		full-size packet can be sent.
+
+Connect		Connect this client socket to remote address.
+Listen		Set this socket to listen for connections (Server).
+
+Send data:
+----------
+
+		Type in the data you want to send, then click Send
+		button. If you want to add an arbitrary byte just
+		type: \<number>	where <number is at most 3 decimal
+		digits>
+		To insert a back slash character type it twice: \\
+		If your number is one or two digits long you will have
+		to press space bar to make it appear. If you press any
+		other key, the character will appear followed by the
+		last key pressed.
+		Any character under ASCII 32 will be appended at the
+		end of the current content. You may use copy & paste
+		functions to move characters under 32 if you need.
+
+Button 'X'	Clear send data edit box.
+Don't route	Don't route the packet, send right to the interface.
+Out of band	Send packet in out-of-band data connection. (TCP Only)
+Parse ASCII	Will parse any string in the format 0x<n> (where n is
+		a two hexadecimal digits number) -In example 0x35 will
+		be translate into ASCII(35h) => '5'
+
+Receive data:
+-------------
+
+		NOTE: Binary data received will be displayed as long as
+		the operating system configuration allows each specific
+		character. To get a full view of incoming data use '>'
+		Any NULL character received will show as '\0' in the
+		Edit box control.
+
+Button 'X'	Clear receive data edit box and Packet information.
+Button '>'	Open RAW Packet Data window to analize received
+		packets. Default Append mode on, which appends incoming
+		data to this window. Mark boundaries option will mark
+		end of every appended packet with a pipe '|'
+Button 'D'	Turn on debug mode to know address and port of
+		incoming data over an UDP socket.
+
+
+HELPERS:
+--------
+
+System Info...	Get brief system info and local IP list.
+Resolver...	Domain name resolver.
+Help...		Show help window.
+About...	About TCP/IP Builder.
+Exit		Quit application.
+
