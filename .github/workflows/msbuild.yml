@@ -17,6 +17,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install VS2010
+      run: choco install vcexpress2010
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
