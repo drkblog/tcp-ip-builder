@@ -147,7 +147,8 @@
       <OutputFile>.\Release/Spoofer.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>ren $(OutDir)$(TargetFileName) Builder.exe</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
