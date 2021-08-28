@@ -3,7 +3,7 @@
 	TCP/IP Builder -- Windows Socket testing tool
 	Copyright (C) 2002 - 2009 by DRK Open source software
 
-	Visit http://www.drk.com.ar/builder.php
+	Visit https://www.drk.com.ar/en/legacy/tcp-ip-builder
 
 	Buenos Aires, Argentina
 
@@ -43,7 +43,7 @@
 #include "afxwin.h"
 
 #define RCV_BUFFER_SIZE 1025
-#define DRK_IPS 10
+#define DRK_IPS 50
 
 /////////////////////////////////////////////////////////////////////////////
 // CSpooferDlg dialog
@@ -83,7 +83,7 @@ public:
 	BOOL	m_bDebug;
 	BOOL	m_bParse;
   IP_ADAPTER_ADDRESSES ip_address[DRK_IPS];
-  ULONG ip_count;
+  ULONG ip_address_size = sizeof(ip_address);
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides

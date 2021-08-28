@@ -3,7 +3,7 @@
 	TCP/IP Builder -- Windows Socket testing tool
 	Copyright (C) 2002 - 2009 by DRK Open source software
 
-	Visit http://www.drk.com.ar/builder.php
+	Visit https://www.drk.com.ar/en/legacy/tcp-ip-builder
 
 	Buenos Aires, Argentina
 

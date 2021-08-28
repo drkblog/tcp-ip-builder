@@ -3,7 +3,7 @@
 	TCP/IP Builder -- Windows Socket testing tool
 	Copyright (C) 2002 - 2009 by DRK Open source software
 
-	Visit http://www.drk.com.ar/builder.php
+	Visit https://www.drk.com.ar/en/legacy/tcp-ip-builder
 
 	Buenos Aires, Argentina
 
@@ -114,7 +114,6 @@ CSpooferDlg::CSpooferDlg(CWnd* pParent /*=NULL*/)
 	m_bNoDelay = FALSE;
 	m_bDebug = FALSE;
 	m_bParse = FALSE;
-  ip_count = sizeof(ip_address);
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -225,7 +224,8 @@ BOOL CSpooferDlg::OnInitDialog()
 	DWORD dwValue;
 
   // Get Info
-  if (GetAdaptersAddresses(AF_INET, GAA_FLAG_SKIP_DNS_SERVER, 0, ip_address, &ip_count) != ERROR_SUCCESS) {
+  ULONG result = GetAdaptersAddresses(AF_INET, GAA_FLAG_SKIP_DNS_SERVER, 0, ip_address, &ip_address_size);
+  if (result != ERROR_SUCCESS) {
     MessageBox("Unable to get IP information from the operating system", "Error", MB_ICONWARNING|MB_OK);
   }
 
@@ -838,8 +838,7 @@ void CSpooferDlg::OnBnClickedReuse()
 
 void CSpooferDlg::OnNetstat() 
 {
-
-	CProtoInfoDlg info;
+	CProtoInfoDlg info(ip_address);
 	info.DoModal();
 		
 }

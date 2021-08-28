@@ -3,7 +3,7 @@
 	TCP/IP Builder -- Windows Socket testing tool
 	Copyright (C) 2002 - 2009 by DRK Open source software
 
-	Visit http://www.drk.com.ar/builder.php
+	Visit https://www.drk.com.ar/en/legacy/tcp-ip-builder
 
 	Buenos Aires, Argentina
 
@@ -30,6 +30,7 @@
 #include "stdafx.h"
 #include "Spoofer.h"
 #include "ResolverDlg.h"
+#include "CAddressResolver.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -73,31 +74,18 @@ END_MESSAGE_MAP()
 
 void CResolverDlg::OnResolve() 
 {
-	CString strCInfo, tmp, str;
-	struct hostent *host;
-	int i=0, j=0;
+	CAddressResolver resolver;
+	CString strCInfo, ips, error;
 
 	UpdateData(TRUE);
 
 	SetCursor(LoadCursor(NULL, IDC_WAIT));
 
-	if (host = gethostbyname (m_strName)) {
-		strCInfo.Format("Computer name: \t%s\r\nAddresses: \r\n", host->h_name);
-
-		while(host->h_addr_list[i]) {
-			str = "\t\t";
-			for(j=0; j<host->h_length; j++) {
-				tmp.Format("%d", (unsigned char)host->h_addr_list[i][j]);
-				str += tmp;
-				if (j<(host->h_length-1)) str += ".";
-			}
-			str += "\r\n";
-			strCInfo.Insert(strCInfo.GetLength(), str);
-			i++;
-		}
+	if (resolver.resolve(m_strName, ips, error) == 0) {
+		strCInfo.Format("CAddresses: %s\r\n", ips);
 	}
 	else {
-		strCInfo = "Can't get computer name nor addresses.\r\n";
+		strCInfo.Format("Can't get computer name nor addresses: %s\r\n", error);
 	}
 
 	SetCursor(LoadCursor(NULL, IDC_ARROW));

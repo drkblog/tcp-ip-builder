@@ -66,26 +66,24 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\Spoofer.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 252, 139
+IDD_ABOUTBOX DIALOGEX 0, 0, 252, 98
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_TOOLWINDOW
 CAPTION " About TCP/IP Builder"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     LTEXT           "TCP/IP Builder Version 1.9",IDC_STATIC,62,10,183,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2002, 2012 by DRK Open source software",IDC_STATIC,62,23,183,8
-    PUSHBUTTON      "www.drk.com.ar",IDC_WEB,118,111,70,12,BS_FLAT
-    LTEXT           "Builder Logo contributed by Sebastián Fernández",IDC_STATIC,62,36,183,8
-    CONTROL         134,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,7,7,44,41
-    CONTROL         135,IDC_STATIC,"Static",SS_BITMAP | WS_BORDER,44,99,44,16
-    GROUPBOX        "A free open source software tool by...",IDC_STATIC,7,76,238,56
+    LTEXT           "Copyright (C) 2002, 2021 by drkbugs",IDC_STATIC,62,23,183,8
+    PUSHBUTTON      "www.drk.com.ar",IDC_WEB,7,79,238,12,BS_FLAT
+    LTEXT           "Builder Logo contributed by Sebastian Fernandez",IDC_STATIC,62,36,183,8
+    CONTROL         IDB_LOGO,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,7,7,44,41
     LTEXT           "DRK Logo contributed by Marcos Zanet",IDC_STATIC,62,50,183,8
-    LTEXT           "Leandro H. Fernández",IDC_STATIC,117,95,72,8
     LTEXT           "Bug fix contributed by Iv Guanglin",IDC_STATIC,62,63,183,8
 END
 
@@ -186,8 +184,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,9,0,0
- PRODUCTVERSION 1,9,0,0
+ FILEVERSION 1,9,1,0
+ PRODUCTVERSION 1,9,1,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x29L
@@ -202,17 +200,17 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "www.drk.com.ar"
-            VALUE "CompanyName", "DRK"
+            VALUE "Comments", "www.drk.com.ar/en/legacy/tcp-ip-builder"
+            VALUE "CompanyName", "drkbugs"
             VALUE "FileDescription", "TCP/IP Builder"
-            VALUE "FileVersion", "1.9.0.0"
+            VALUE "FileVersion", "1.9.1.0"
             VALUE "InternalName", "TCPIPBuilder"
-            VALUE "LegalCopyright", "Copyright (C) 2002, 2012 by DRK Open source software"
+            VALUE "LegalCopyright", "Copyright (C) 2002, 2021 by DRK Open source software"
             VALUE "LegalTrademarks", "GNU GPL"
             VALUE "OriginalFilename", "BUILDER.EXE"
             VALUE "PrivateBuild", "-"
             VALUE "ProductName", "TCP/IP Builder Application"
-            VALUE "ProductVersion", "1.9.0.0"
+            VALUE "ProductVersion", "1.9.1.0"
             VALUE "SpecialBuild", "-"
         END
     END
@@ -237,7 +235,7 @@ BEGIN
         RIGHTMARGIN, 245
         VERTGUIDE, 62
         TOPMARGIN, 7
-        BOTTOMMARGIN, 132
+        BOTTOMMARGIN, 91
     END
 
     IDD_SPOOFER_DIALOG, DIALOG
@@ -299,7 +297,20 @@ END
 //
 
 IDB_LOGO                BITMAP                  "res\\logo.bmp"
+
 IDB_DRKLOGO             BITMAP                  "res\\bitmap1.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -310,7 +321,7 @@ STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "&About TCP/IP Builder..."
     IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
-    IDS_URL                 "http://www.drk.com.ar/builder.php?f=0&v=155"
+    IDS_URL                 "https://www.drk.com.ar/builder.php?f=0&v=191"
 END
 
 #endif    // English (United States) resources

@@ -3,7 +3,7 @@
 	TCP/IP Builder -- Windows Socket testing tool
 	Copyright (C) 2002 - 2009 by DRK Open source software
 
-	Visit http://www.drk.com.ar/builder.php
+	Visit https://www.drk.com.ar/en/legacy/tcp-ip-builder
 
 	Buenos Aires, Argentina
 
@@ -40,7 +40,7 @@ class CProtoInfoDlg : public CDialog
 {
 // Construction
 public:
-	CProtoInfoDlg(CWnd* pParent = NULL);   // standard constructor
+	CProtoInfoDlg(PIP_ADAPTER_ADDRESSES addresses, CWnd* pParent = NULL);   // standard constructor
 
 // Dialog Data
 	//{{AFX_DATA(CProtoInfoDlg)
@@ -64,6 +64,8 @@ protected:
 	virtual BOOL OnInitDialog();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+private:
+	PIP_ADAPTER_ADDRESSES addresses;
 };
 
 //{{AFX_INSERT_LOCATION}}
