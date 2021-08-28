@@ -82,7 +82,7 @@ void CResolverDlg::OnResolve()
 	SetCursor(LoadCursor(NULL, IDC_WAIT));
 
 	if (resolver.resolve(m_strName, ips, error) == 0) {
-		strCInfo.Format("CAddresses: %s\r\n", ips);
+		strCInfo.Format("Addresses: \r\n%s\r\n", ips);
 	}
 	else {
 		strCInfo.Format("Can't get computer name nor addresses: %s\r\n", error);
