@@ -82,15 +82,15 @@ public:
 	BOOL	m_bNoDelay;
 	BOOL	m_bDebug;
 	BOOL	m_bParse;
-  IP_ADAPTER_ADDRESSES ip_address[DRK_IPS];
-  ULONG ip_address_size = sizeof(ip_address);
 	//}}AFX_DATA
+	IP_ADAPTER_ADDRESSES ip_address[DRK_IPS];
+	ULONG ip_address_size = sizeof(ip_address);
 
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CSpooferDlg)
-	public:
+public:
 	virtual BOOL DestroyWindow();
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL

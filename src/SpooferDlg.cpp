@@ -118,10 +118,8 @@ CSpooferDlg::CSpooferDlg(CWnd* pParent /*=NULL*/)
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
-
 	// Socket
 	m_pSocket = new CMSocket(); 
-	
 }
 
 void CSpooferDlg::DoDataExchange(CDataExchange* pDX)
@@ -179,8 +177,8 @@ BEGIN_MESSAGE_MAP(CSpooferDlg, CDialog)
 	ON_BN_CLICKED(IDC_BIND, OnBind)
 	ON_BN_CLICKED(IDC_DEBUG, OnDebug)
 	//}}AFX_MSG_MAP
-  ON_BN_CLICKED(IDC_BCAST, &CSpooferDlg::OnBnBroadcase)
-  ON_BN_CLICKED(IDC_REUSE, &CSpooferDlg::OnBnClickedReuse)
+	ON_BN_CLICKED(IDC_BCAST, &CSpooferDlg::OnBnBroadcase)
+	ON_BN_CLICKED(IDC_REUSE, &CSpooferDlg::OnBnClickedReuse)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -189,8 +187,6 @@ END_MESSAGE_MAP()
 BOOL CSpooferDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-
-	// Add "About..." menu item to system menu.
 
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -223,11 +219,11 @@ BOOL CSpooferDlg::OnInitDialog()
 	CRegKey registry;
 	DWORD dwValue;
 
-  // Get Info
-  ULONG result = GetAdaptersAddresses(AF_INET, GAA_FLAG_SKIP_DNS_SERVER, 0, ip_address, &ip_address_size);
-  if (result != ERROR_SUCCESS) {
-    MessageBox("Unable to get IP information from the operating system", "Error", MB_ICONWARNING|MB_OK);
-  }
+	// Get Info
+	ULONG result = GetAdaptersAddresses(AF_INET, GAA_FLAG_SKIP_DNS_SERVER, 0, ip_address, &ip_address_size);
+	if (result != ERROR_SUCCESS) {
+		MessageBox("Unable to get IP information from the operating system", "Error", MB_ICONWARNING|MB_OK);
+	}
 
 	// Default
 	m_cIP.SetAddress(127,0,0,1);
@@ -410,14 +406,12 @@ void CSpooferDlg::OnCreate()
 			UpdateDataPatch(FALSE);
 		}
 	}
-
 }
 
 void CSpooferDlg::UpdateDataPatch(BOOL bGetData)
 {
 	BYTE vip[4];
 	UINT button;
-
 
 	// El update normal
 	UpdateData(bGetData);
@@ -443,12 +437,10 @@ void CSpooferDlg::UpdateDataPatch(BOOL bGetData)
 		// Patch para el RIP 
 		m_cRIP.SetAddress(m_dwRAddress);
 	}
-
 }
 
 void CSpooferDlg::SetErrorString(int error, char *str, int strsize)
 {
-
 	switch(error) {
 		case WSANOTINITIALISED:strcpy_s(str, strsize, "Socket API not initialized.");
 								break;
@@ -512,8 +504,6 @@ void CSpooferDlg::SetErrorString(int error, char *str, int strsize)
 
 void CSpooferDlg::OnDesroy() 
 {
-	// TODO: Add your control notification handler code here
-
 	delete m_pSocket;
 	m_pSocket = new CMSocket();
 
@@ -651,10 +641,7 @@ void CSpooferDlg::OnConnect()
 
 LRESULT CSpooferDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
 {
-	// TODO: Add your specialized code here and/or call the base class
-
 	return CDialog::WindowProc(message, wParam, lParam);
-
 }
 
 void CSpooferDlg::Receive(BOOL bOOB)
@@ -727,14 +714,11 @@ void CSpooferDlg::Receive(BOOL bOOB)
 
 	// Escribo datos
 	UpdateDataPatch(FALSE);
-
 }
 
 void CSpooferDlg::Connected()
 {
-
 	m_cSend.EnableWindow(TRUE);
-
 }
 
 void CSpooferDlg::OnChangeRbuffer() 
@@ -743,8 +727,6 @@ void CSpooferDlg::OnChangeRbuffer()
 
 void CSpooferDlg::OnRclr() 
 {
-	// TODO: Add your control notification handler code here
-
 	UpdateDataPatch(TRUE);
 	m_strReceive.Empty();
 	m_dwPackets=0;
@@ -758,27 +740,20 @@ void CSpooferDlg::OnRclr()
 	if (m_pDetailDlg) {
 		m_pDetailDlg->Clear();
 	}
-
-	
 }
 
 void CSpooferDlg::OnSclr() 
 {
-	// TODO: Add your control notification handler code here
-	
 	UpdateDataPatch(TRUE);
 	m_strSend.Empty();
 	UpdateDataPatch(FALSE);
-
 }
 
 void CAboutDlg::OnWeb() 
 {
 	CString str;
-
 	str.LoadString(IDS_URL);
 	ShellExecute(NULL , "open", str, NULL, NULL, SW_SHOWNORMAL);
-
 }
 
 void CSpooferDlg::OnAbout() 
@@ -791,9 +766,7 @@ void CSpooferDlg::OnAbout()
 void CSpooferDlg::OnKeepalive() 
 {
 	char str[256]={"No more info."};
-
 	UpdateDataPatch(TRUE);
-
 	if (!m_pSocket->SetSockOpt(SO_KEEPALIVE, &m_bKeepAlive, sizeof(BOOL), SOL_SOCKET)) {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
 		MessageBox(str, "Can't modify socket option", MB_ICONSTOP | MB_OK);
@@ -803,9 +776,7 @@ void CSpooferDlg::OnKeepalive()
 void CSpooferDlg::OnBnBroadcase()
 {
 	char str[256]={"Is this an UDP socket?"};
-
 	UpdateDataPatch(TRUE);
-
 	if (!m_pSocket->SetSockOpt(SO_BROADCAST, &m_bBCast, sizeof(BOOL), SOL_SOCKET)) {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
 		MessageBox(str, "Can't modify socket option", MB_ICONSTOP | MB_OK);
@@ -815,9 +786,7 @@ void CSpooferDlg::OnBnBroadcase()
 void CSpooferDlg::OnNodelay() 
 {
 	char str[256]={"No more info."};
-
 	UpdateDataPatch(TRUE);
-
 	if (!m_pSocket->SetSockOpt(TCP_NODELAY, &m_bNoDelay, sizeof(BOOL), IPPROTO_TCP)) {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
 		MessageBox(str, "Can't modify socket option", MB_ICONSTOP | MB_OK);
@@ -827,10 +796,8 @@ void CSpooferDlg::OnNodelay()
 void CSpooferDlg::OnBnClickedReuse()
 {
 	char str[256]={"No more info."};
-
 	UpdateDataPatch(TRUE);
-
-  if (!m_pSocket->SetSockOpt(SO_REUSEADDR, &m_bReuse, sizeof(BOOL), SOL_SOCKET)) {
+	if (!m_pSocket->SetSockOpt(SO_REUSEADDR, &m_bReuse, sizeof(BOOL), SOL_SOCKET)) {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
 		MessageBox(str, "Can't modify socket option", MB_ICONSTOP | MB_OK);
 	}
@@ -840,37 +807,29 @@ void CSpooferDlg::OnNetstat()
 {
 	CProtoInfoDlg info(ip_address);
 	info.DoModal();
-		
 }
 
 void CSpooferDlg::OnDnsres() 
 {
-
 	CResolverDlg resolver;
 	resolver.DoModal();
 }
 
 void CSpooferDlg::OnRdetail() 
 {
-
 	if (m_pDetailDlg == NULL) {
 		// Creo la ventana
 		m_pDetailDlg = new CDetailDlg();
-
 		m_pDetailDlg->Create(IDD_RDWINDOW, NULL);
-
 		m_pDetailDlg->ShowWindow(SW_SHOW);
-
 		SetFocus();
 	}
 	else {
 		// Destruyo la ventana
 		m_pDetailDlg->DestroyWindow();
-
 		delete m_pDetailDlg;
 		m_pDetailDlg = NULL;
 	}
-
 }
 
 void CSpooferDlg::OnHelpb() 
@@ -897,7 +856,7 @@ void CSpooferDlg::OnBind()
 	}
 	else {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
-		MessageBox(str, "Can't set the socket to listen", MB_ICONSTOP | MB_OK);
+		MessageBox(str, "Can't listen on this socket", MB_ICONSTOP | MB_OK);
 	}
 
 	// Patch for limit
@@ -915,7 +874,7 @@ void CSpooferDlg::OnBind()
 	m_cConnect.EnableWindow(FALSE);
 	m_cBind.EnableWindow(FALSE);
 
-  SaveToRegistry();
+    SaveToRegistry();
 
 	SetCursor(LoadCursor(NULL, IDC_ARROW));
 }
@@ -954,7 +913,6 @@ void CSpooferDlg::Accept()
 		UpdateDataPatch(FALSE);
 
 		m_cSend.EnableWindow(TRUE);
-
 	}
 	else {
 		SetErrorString(m_pSocket->GetLastError(), str, sizeof(str));
@@ -971,22 +929,18 @@ void CSpooferDlg::OnDebug()
 void CAboutDlg::OnLButtonUp(UINT nFlags, CPoint point) 
 {
 	CDialog::OnLButtonUp(nFlags, point);
-
 	EndModalLoop(1);
 }
 
 void CAboutDlg::OnRButtonUp(UINT nFlags, CPoint point) 
 {
 	CDialog::OnRButtonUp(nFlags, point);
-
 	EndModalLoop(1);
 }
 
 void CSpooferDlg::OnCancel() 
 {
 	if (MessageBox("Do you really want to quit?", "TCP/IP Builder", MB_YESNO | MB_DEFBUTTON2 | MB_ICONWARNING) == IDYES) {
-
-
 		CDialog::OnCancel();
 	}
 }
@@ -997,38 +951,39 @@ void CSpooferDlg::SaveToRegistry()
 	CRegKey registry;
 	DWORD dwValue;
 
-		// Save to registry
-		res = registry.Create(HKEY_CURRENT_USER, "Software\\DRKLHF\\Builder");
+	// Save to registry
+	res = registry.Create(HKEY_CURRENT_USER, "Software\\DRKLHF\\Builder");
 
-		if (res == ERROR_SUCCESS) {
+	if (res == ERROR_SUCCESS) {
 
-			UpdateDataPatch(TRUE);
+		UpdateDataPatch(TRUE);
 
-			// IP
-			m_cIP.GetAddress(dwValue);
-			registry.SetDWORDValue("LocalIP", dwValue);
+		// IP
+		m_cIP.GetAddress(dwValue);
+		registry.SetDWORDValue("LocalIP", dwValue);
 
-			// Port
-			registry.SetDWORDValue("LocalPort", m_iPort);
+		// Port
+		registry.SetDWORDValue("LocalPort", m_iPort);
 
-			// TCP/UDP
-			dwValue = GetCheckedRadioButton(IDC_TCP, IDC_UDP);
-			registry.SetDWORDValue("Protocol", dwValue);
+		// TCP/UDP
+		dwValue = GetCheckedRadioButton(IDC_TCP, IDC_UDP);
+		registry.SetDWORDValue("Protocol", dwValue);
 
-			// RIP
-			m_cRIP.GetAddress(dwValue);
-			registry.SetDWORDValue("RemoteIP", dwValue);
+		// RIP
+		m_cRIP.GetAddress(dwValue);
+		registry.SetDWORDValue("RemoteIP", dwValue);
 
-			// RPort
-			registry.SetDWORDValue("RemotePort", m_iRPort);
+		// RPort
+		registry.SetDWORDValue("RemotePort", m_iRPort);
 
-			// SendFlags
-			dwValue = 0;
-			if (m_bNoRoute) dwValue |= 0x01;
-			if (m_bOOB) dwValue |= 0x02;
-			if (m_bParse) dwValue |= 0x04;
-      if (m_bBCast) dwValue |= 0x08;
-			registry.SetDWORDValue("SFlags", dwValue);
-		}
+		// SendFlags
+		dwValue = 0;
+		if (m_bNoRoute) dwValue |= 0x01;
+		if (m_bOOB) dwValue |= 0x02;
+		if (m_bParse) dwValue |= 0x04;
+		if (m_bBCast) dwValue |= 0x08;
+		registry.SetDWORDValue("SFlags", dwValue);
+		registry.Close();
+	}
 }
 

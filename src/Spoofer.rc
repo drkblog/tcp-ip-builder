@@ -135,13 +135,14 @@ BEGIN
     CONTROL         "Reuse address",IDC_REUSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,272,20,63,10
 END
 
-IDD_PROTOINFO DIALOGEX 0, 0, 292, 195
+IDD_PROTOINFO DIALOGEX 0, 0, 361, 232
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_TOOLWINDOW
 CAPTION " System information"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    EDITTEXT        IDC_INFO,7,7,278,181,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_INFO,7,7,347,198,ES_MULTILINE | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL | NOT WS_TABSTOP
+    PUSHBUTTON      "Close",IDC_CLOSE_INFO,304,211,50,14
 END
 
 IDD_RESOLVER DIALOGEX 0, 0, 346, 192
@@ -183,8 +184,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,9,1,0
- PRODUCTVERSION 1,9,1,0
+ FILEVERSION 1,9,2,0
+ PRODUCTVERSION 1,9,2,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x29L
@@ -202,14 +203,14 @@ BEGIN
             VALUE "Comments", "www.drk.com.ar/en/legacy/tcp-ip-builder"
             VALUE "CompanyName", "drkbugs"
             VALUE "FileDescription", "TCP/IP Builder"
-            VALUE "FileVersion", "1.9.1.0"
+            VALUE "FileVersion", "1.9.2.0"
             VALUE "InternalName", "TCPIPBuilder"
             VALUE "LegalCopyright", "Copyright (C) 2002, 2021 by DRK Open source software"
             VALUE "LegalTrademarks", "GNU GPL"
             VALUE "OriginalFilename", "BUILDER.EXE"
             VALUE "PrivateBuild", "-"
             VALUE "ProductName", "TCP/IP Builder Application"
-            VALUE "ProductVersion", "1.9.1.0"
+            VALUE "ProductVersion", "1.9.2.0"
             VALUE "SpecialBuild", "-"
         END
     END
@@ -258,9 +259,9 @@ BEGIN
     IDD_PROTOINFO, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 285
+        RIGHTMARGIN, 354
         TOPMARGIN, 7
-        BOTTOMMARGIN, 188
+        BOTTOMMARGIN, 225
     END
 
     IDD_RESOLVER, DIALOG
@@ -340,7 +341,7 @@ STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "&About TCP/IP Builder..."
     IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
-    IDS_URL                 "https://www.drk.com.ar/en/legacy/tcp-ip-builder?v=191"
+    IDS_URL                 "https://www.drk.com.ar/en/legacy/tcp-ip-builder?v=192"
 END
 
 #endif    // English (United States) resources

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "CAddressResolver.h"
+#include "AddressResolver.h"
 
 #include <ws2tcpip.h>
 
@@ -76,12 +76,16 @@ DWORD CAddressResolver::resolve(CString hostname, CString& ips, CString& error)
     return 0;
 }
 
-DWORD CAddressResolver::inAddrToString(LPSOCKADDR sockaddr_ip, DWORD address_length, CString& ip) {
-    DWORD dwRetval, ipbufferlength = 46;
+#define BUFFER_LENGHT 46
 
-    dwRetval = WSAAddressToString(sockaddr_ip, address_length, NULL, ip.GetBufferSetLength(ipbufferlength), &ipbufferlength);
+DWORD CAddressResolver::inAddrToString(LPSOCKADDR sockaddr_ip, DWORD address_length, CString& ip) {
+    DWORD dwRetval, ipbufferlength = BUFFER_LENGHT;
+    WCHAR wideAddress[BUFFER_LENGHT];
+
+    dwRetval = WSAAddressToStringW(sockaddr_ip, address_length, NULL, wideAddress, &ipbufferlength);
     if (dwRetval == 0) {
-        ip.ReleaseBuffer();
+        CStringA string = CStringA(wideAddress);
+        ip = string;
     }
 
     return dwRetval;

@@ -66,6 +66,9 @@ protected:
 	DECLARE_MESSAGE_MAP()
 private:
 	PIP_ADAPTER_ADDRESSES addresses;
+public:
+	CEdit m_ctlInfo;
+	afx_msg void OnClickedCloseInfo();
 };
 
 //{{AFX_INSERT_LOCATION}}

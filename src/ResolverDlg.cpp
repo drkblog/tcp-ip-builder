@@ -30,7 +30,7 @@
 #include "stdafx.h"
 #include "Spoofer.h"
 #include "ResolverDlg.h"
-#include "CAddressResolver.h"
+#include "AddressResolver.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

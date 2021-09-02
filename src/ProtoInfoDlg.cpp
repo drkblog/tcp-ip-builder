@@ -30,7 +30,7 @@
 #include "stdafx.h"
 #include "Spoofer.h"
 #include "ProtoInfoDlg.h"
-#include "CAddressResolver.h"
+#include "AddressResolver.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -58,12 +58,14 @@ void CProtoInfoDlg::DoDataExchange(CDataExchange* pDX)
 	//{{AFX_DATA_MAP(CProtoInfoDlg)
 	DDX_Text(pDX, IDC_INFO, m_strInfo);
 	//}}AFX_DATA_MAP
+	DDX_Control(pDX, IDC_INFO, m_ctlInfo);
 }
 
 
 BEGIN_MESSAGE_MAP(CProtoInfoDlg, CDialog)
 	//{{AFX_MSG_MAP(CProtoInfoDlg)
 	//}}AFX_MSG_MAP
+	ON_BN_CLICKED(IDC_CLOSE_INFO, &CProtoInfoDlg::OnClickedCloseInfo)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -74,9 +76,8 @@ BOOL CProtoInfoDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	////
 	SYSTEM_INFO lpSystemInfo;
-	struct hostent FAR *host;
 	CString strPArch, strPType, strCName;
-	CString strPInfo, strCInfo, strWSInfo;
+	CString strPInfo, strNetworkAdapters, strWSInfo;
 	CString str, tmp;
 	int i=0, j=0;
 	WORD wVersionRequested;
@@ -159,10 +160,24 @@ BOOL CProtoInfoDlg::OnInitDialog()
 	strPInfo.Format("Processor architecure: \t%s\r\nProcessor type: \t\t%s\r\nQuantity: \t\t\t%d\r\n", strPArch, strPType, lpSystemInfo.dwNumberOfProcessors);
 
 	// Computer info
-	CAddressResolver resolver;
-	CString ips, error;
-	resolver.resolve("127.0.0.1", ips, error);
-	m_strInfo.Append(ips);
+	PIP_ADAPTER_ADDRESSES address = addresses;
+	while (address != NULL) {
+		strNetworkAdapters.Append(CStringA(address->FriendlyName) + "\r\n");
+		strNetworkAdapters.Append(CStringA(address->Description) + "\r\n");
+		strNetworkAdapters.Append(CStringA(address->AdapterName) + "\r\n");
+		strNetworkAdapters.Append("MAC: ");
+		for (UINT i = 0; i < address->PhysicalAddressLength; i++) {
+			CString number;
+			number.Format("%02X", address->PhysicalAddress[i]);
+			strNetworkAdapters.Append(number);
+			if (i+1 < address->PhysicalAddressLength) {
+				strNetworkAdapters.Append(":");
+			}
+		}
+		strNetworkAdapters.Append("\r\n\r\n");
+		address = address->Next;
+	}
+	
 
 	// WinSock Info
 	wVersionRequested = MAKEWORD(1,0);
@@ -172,7 +187,6 @@ BOOL CProtoInfoDlg::OnInitDialog()
 		strWSInfo = "Can't find WinSock DLL";
 	}
 	else {
-
 		strWSInfo.Format("Version: \t\t%d.%d\r\nDescription: \t%s\r\nSystem status: \t%s\r\nMax UDP packet: \t%d bytes\r\n\r\n", HIBYTE(wsaData.wHighVersion), LOBYTE(wsaData.wHighVersion), wsaData.szDescription, wsaData.szSystemStatus, wsaData.iMaxUdpDg);
 
 		/* Clean up*/ 
@@ -181,9 +195,17 @@ BOOL CProtoInfoDlg::OnInitDialog()
  
     
 	SetCursor(LoadCursor(NULL, IDC_ARROW));
-	m_strInfo.Format("--- Processor Info ---\r\n%s\r\n--- Computer Info ---\r\n%s\r\n--- WinSock Info ---\r\n%s\r\n", strPInfo, strCInfo, strWSInfo);
+	m_strInfo.Format("--- Processor Info ---\r\n%s\r\n--- Network adapters ---\r\n%s\r\n--- WinSock Info ---\r\n%s\r\n", strPInfo, strNetworkAdapters, strWSInfo);
+
+	m_ctlInfo.SetSel(-1,0);
 	UpdateData(FALSE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+void CProtoInfoDlg::OnClickedCloseInfo()
+{
+	EndDialog(0);
 }
